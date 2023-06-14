@@ -12,7 +12,8 @@
 			<view class="btn-box">
 				<view class="btn" @click="cancel">不同意</view>
 				<!-- #ifdef MP-WEIXIN -->
-				<button class="btn agree" open-type="getAuthorize" @click="login">同意并继续</button>
+				<!-- <button class="btn agree" open-type="getAuthorize" @click="login">同意并继续</button> -->
+				<button class="btn agree" open-type="getUserInfo" @getuserinfo="login" ></button>
 				<!-- #endif -->
 			</view>
 		</view>
@@ -112,6 +113,11 @@
 					success: function(res_login) {
 						if (res_login.code) {
 							console.log("res_login:", res_login)
+							wx.getUserInfo({
+								success: function (userResult) {
+									console.log('用户',userResult)
+								}
+							})
 							// 在此调用登录接口
 							login({code:res_login.code}).then(res => {
 								console.log('登录成功',res)
