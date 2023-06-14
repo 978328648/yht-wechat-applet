@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "樱花兔",
+  "usingComponents": {
+    "yht-banner": "/components/yht-banner/yht-banner"
+  }
+}

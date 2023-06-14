@@ -1,0 +1,228 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+button {
+  background-color: transparent;
+  padding: 0rpx;
+  line-height: inherit;
+  margin: 0;
+  border-radius: 0rpx;
+  cursor: default;
+}
+button::after {
+  border: none;
+}
+.yht-mine {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  color: #464C56;
+  /*添加开通会员入口 start*/
+  /*添加开通会员入口 end*/
+}
+.yht-mine .top {
+  height: 220rpx;
+  background: #f391a9;
+  padding: 20rpx 0 0 34rpx;
+  line-height: 90rpx;
+  font-size: 32rpx;
+}
+.yht-mine .top .user {
+  width: 100%;
+  display: flex;
+}
+.yht-mine .top .user .user-head {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  float: left;
+  margin-right: 22rpx;
+  background-color: #f8f8f8;
+}
+.yht-mine .top .user .user-name {
+  position: relative;
+  color: #fff;
+  font-size: 32rpx;
+}
+.yht-mine .top .user .user-name .dlGoArr {
+  position: absolute;
+  top: 34rpx;
+  right: -16rpx;
+  height: 18rpx;
+  width: 18rpx;
+  border-top: 2rpx solid #fff;
+  border-right: 2rpx solid #fff;
+  margin-left: 4rpx;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.yht-mine .goCharge {
+  height: 58rpx;
+  line-height: 52rpx;
+  font-size: 24rpx;
+  color: #3778FF;
+  min-width: 72rpx;
+  padding: 0 20rpx;
+  border: 2rpx solid #3778FF;
+  border-radius: 40rpx;
+  float: right;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+.yht-mine .personalList {
+  line-height: 114rpx;
+  height: 114rpx;
+  margin: 0 32rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+  font-size: 28rpx;
+  position: relative;
+  text-align: left;
+}
+.yht-mine .personalList .dlGoArr {
+  position: absolute;
+  right: 6rpx;
+  height: 18rpx;
+  width: 18rpx;
+  border-top: 2rpx solid #989FA8;
+  border-right: 2rpx solid #989FA8;
+  top: 48rpx;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.yht-mine .adver-img {
+  background: url(https://cdn.cmread.com/comment/image/5527c1c8acd188c8056a73bd054b84060c8135b48056/pic.jpg) no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 184rpx;
+  border: none;
+  box-sizing: none;
+  border-bottom: none;
+  overflow: hidden;
+  border-radius: none;
+  padding: 0;
+}
+.yht-mine .receive-banner {
+  width: 100%;
+}
+.yht-mine .pannel {
+  width: 686rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  margin: -70rpx auto 24rpx auto;
+}
+.yht-mine .personMember {
+  position: absolute;
+  background: url(http://cdn.cmread.com/comment/image/5527c1c8ab93b08405527d21c04eac0622707cfd5c44/BR017561-gray.png) no-repeat;
+  background-size: 100% 92rpx;
+  margin-top: 28rpx;
+  width: 686rpx;
+  height: 92rpx;
+  bottom: 0rpx;
+  left: 32rpx;
+}
+.yht-mine .personMember .consumptionFund {
+  position: absolute;
+  left: 40rpx;
+  top: 31%;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 40rpx;
+}
+.yht-mine .personMember .memberDescConsumption {
+  right: 214rpx !important;
+}
+.yht-mine .personMember.huiyuanMe {
+  background: url(http://cdn.cmread.com/comment/image/5527c1c8a293b2d005527d21622f770622707d55a411/BR017561-gold.png) no-repeat;
+  background-size: 100%;
+}
+.yht-mine .personMember .memberPic {
+  position: absolute;
+  left: 30rpx;
+  width: 192rpx;
+  height: 36rpx;
+  top: 31%;
+}
+.yht-mine .personMember .memberDesc {
+  position: absolute;
+  right: 172rpx;
+  font-size: 24rpx;
+  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+  font-weight: 400;
+  color: #969fa9;
+  text-align: center;
+  line-height: 92rpx;
+}
+.yht-mine .personMember .memberDesc.fontcolor {
+  color: #B38856;
+}
+.yht-mine .personMember .lookMember2 {
+  font-size: 24rpx;
+  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+  font-weight: 400;
+  color: #464c56;
+  position: absolute;
+  right: 60rpx;
+  text-align: center;
+  line-height: 92rpx;
+}
+.yht-mine .personMember .lookMember {
+  width: 116rpx;
+  height: 48rpx;
+  background: white;
+  border-radius: 28rpx;
+  border: 1px solid #cf8431;
+  position: absolute;
+  right: 32rpx;
+  text-align: center;
+  line-height: 48rpx;
+  font-size: 26rpx;
+  color: #cf8431;
+  top: 22%;
+}
+.yht-mine .personMember .lookMemberSj {
+  background: linear-gradient(58deg, #856138 0%, #382000 100%);
+  color: #FFDDA6;
+}
+.yht-mine .personMember .lookMember2 .cmr-img {
+  width: 16rpx;
+  height: 16rpx;
+  padding-left: 2rpx;
+}
+.yht-mine .personalList .balance {
+  position: absolute;
+  right: 34rpx;
+  font-size: 32rpx;
+  font-family: 'DIN Condensed' !important;
+  font-weight: bold;
+  color: #464c56;
+}
+.yht-mine .personalList .price {
+  font-size: 26rpx;
+  font-family: SourceHanSansCN-Normal, SourceHanSansCN;
+  font-weight: 400;
+  color: #464c56;
+}
+

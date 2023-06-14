@@ -1,0 +1,16 @@
+
+.yht-index {
+	min-height: 100vh;
+	padding: 0 20rpx;
+	box-sizing: border-box;
+	overflow: hidden;
+	background-color: #F5F5F5;
+}
+.list-item {
+	display: flex;
+	justify-content: space-between;
+}
+.colum {
+	width: 200rpx;
+}
+
