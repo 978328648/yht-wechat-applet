@@ -1,7 +1,7 @@
 <template>
 	<view class="yht-index">
-		<yhtBanner v-if="list" :list="list"></yhtBanner>
-		<view class="list-item" v-for="(item,index) in list">
+		<yhtBanner v-if="list.length !== 0" :list="list"></yhtBanner>
+		<!-- <view class="list-item" v-for="(item,index) in list">
 			<view class="colum">
 				姓名：{{item.username}}
 			</view>
@@ -17,7 +17,7 @@
 			<button class="colum" @click="updateInfo(item)">
 				年龄+1
 			</button>
-		</view>
+		</view> -->
 		<view class="text-area">
 			<!-- <text class="title">{{title}}</text> -->
 			<!-- <button @click="addInfo">新增豹豹信息</button> -->
@@ -34,7 +34,7 @@
 		dataIndextj,
 		getListTest,
 		addTest,
-		updateTest
+		updateTest,getBanner
 	} from "@/utils/api.js"
 	
 	import {http} from "@/utils/http.js"
@@ -50,15 +50,15 @@
 			}
 		},
 		onLoad() {
-			this.getListTest();
+			this.getBannerFun();
 		},
 		methods: {
-			getListTest() {
-				getListTest().then(res => {
-					this.list = res;
-					console.log('res',res)
+			// 获取首页banner图
+			getBannerFun() {
+				getBanner().then(res => {
+					this.list = res.imgList;
+					console.log('this.list',this.list)
 				})
-				
 			},
 			addInfo() {
 				addTest({
