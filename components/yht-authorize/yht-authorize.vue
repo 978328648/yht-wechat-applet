@@ -2,18 +2,18 @@
 	<view class="yht-authorize" @click="cancel"
 		:style="showDialog?'visibility: visible; opacity: 1;':'visibility: hidden; opacity: 0;'">
 		<view @click.stop="" class="content" :style="{'bottom':showDialog? '0rpx':'-408rpx'}">
-			<view class="content-title">咪咕用户协议及隐私保护</view>
+			<view class="content-title">樱花兔用户协议及隐私保护</view>
 			<view class="content-detail">
 				为保障您的合法权益，请先阅读并同意
-				<text class="theme-color" @click="open(1)">《咪咕用户服务协议》</text>
+				<text class="theme-color" @click="open(1)">《樱花兔用户服务协议》</text>
 				及
-				<text class="theme-color" @click="open(2)">《咪咕隐私权政策》</text>
+				<text class="theme-color" @click="open(2)">《樱花兔隐私权政策》</text>
 			</view>
 			<view class="btn-box">
 				<view class="btn" @click="cancel">不同意</view>
 				<!-- #ifdef MP-WEIXIN -->
-				<!-- <button class="btn agree" open-type="getAuthorize" @click="login">同意并继续</button> -->
-				<button class="btn agree" open-type="getUserInfo" @getuserinfo="login" ></button>
+				<button class="btn agree" open-type="getAuthorize" @click="login">同意并继续</button>
+				<!-- <button class="btn agree" open-type="getUserInfo" @getuserinfo="login">同意并继续</button> -->
 				<!-- #endif -->
 			</view>
 		</view>
@@ -113,11 +113,11 @@
 					success: function(res_login) {
 						if (res_login.code) {
 							console.log("res_login:", res_login)
-							wx.getUserInfo({
-								success: function (userResult) {
-									console.log('用户',userResult)
-								}
-							})
+							// wx.getUserInfo({
+							// 	success: function (userResult) {
+							// 		console.log('用户',userResult)
+							// 	}
+							// })
 							// 在此调用登录接口
 							login({code:res_login.code}).then(res => {
 								console.log('登录成功',res)
