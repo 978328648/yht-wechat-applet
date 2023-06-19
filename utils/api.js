@@ -1,4 +1,12 @@
 import {http} from "./http.js"
+export function getBanner(data) {
+  return http({
+    url: '/user/getHomeBanner',
+    method: "GET",
+    atType: "no",
+	data
+  })
+}
 export function getListTest(data) {
   return http({
     url: '/user/list',

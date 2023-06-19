@@ -2,8 +2,8 @@
 // import jsencrypt from "@/utils/jsencrypt.js"
 import store from '@/store'
 const baseUrl = {
-	// API_HOST: "https://m.cmread.com",//现网
-	API_HOST: "http://192.168.31.115:9090",//我的ip
+	API_HOST: "https://www.a57521.com:5000",//现网
+	// API_HOST: "http://192.168.31.115:9090",//我的ip
 	// API_HOST: "https://wap.cmread.com",
 	// API_HOST: "https://mtest.cmread.com:8145",
 	// API_HOST: "http://192.168.178.69:8080",//sit

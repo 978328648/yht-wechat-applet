@@ -6,7 +6,7 @@
 				<view class="banner-item">
 					<!-- 注意图片路径 -->
 					<view @click="onKip(item,index)" class="navbox">
-						<image src="@/static/banner.png"
+						<image :src="`http://www.a57521.com:8008/${item}`"
 							mode="aspectFill" v-if="true||item && item.picUrl" lazy-load="true" class="booklog"></image>
 						<!-- <image src="https://cdn1.cmread.com/ues/61/55273d99ec7ed80ab80415caab35d6092e61/pic.jpg"
 							mode="aspectFill" v-if="true||item && item.picUrl" lazy-load="true" class="booklog"></image> -->
@@ -34,7 +34,7 @@
 			};
 		},
 		mounted() {
-			console.log('list', this.list)
+			// console.log('list', this.list)
 		},
 		methods: {
 			transition(e) {
@@ -47,7 +47,6 @@
 			onKip(item, index) {
 				let jupUrl = `/pages/detail/detail`;
 				this.$utils.onkip(jupUrl)
-
 			},
 			getCaption(obj) {
 				var index = obj.indexOf("vt=");
@@ -92,7 +91,7 @@
 	/* banner指示器 */
 	.add-dots {
 		text-align: center;
-
+		margin-top: -20px;
 		.dots-Active {
 			display: inline-block;
 			// width: 32rpx;
