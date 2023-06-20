@@ -1,6 +1,11 @@
 <template>
 	<view class="yht-index">
-		<yhtBanner v-if="list.length !== 0" :list="list"></yhtBanner>
+		<img :src="`http://www.a57521.com:8008/${activityList[0].activity_url}`" v-if="activityList.length !== 0" alt="" srcset="" class="active-class">
+		<yhtBanner v-if="bannerList.length !== 0" :list="bannerList"></yhtBanner>
+		
+		<view v-for="(items,index) in sortList" :key="index">
+			<text>{items.sortName}</text>
+		</view>
 		<!-- <view class="list-item" v-for="(item,index) in list">
 			<view class="colum">
 				姓名：{{item.username}}
@@ -34,7 +39,7 @@
 		dataIndextj,
 		getListTest,
 		addTest,
-		updateTest,getBanner
+		updateTest,getBanner,getActivityList,getSortList
 	} from "@/utils/api.js"
 	
 	import {http} from "@/utils/http.js"
@@ -46,18 +51,31 @@
 		data() {
 			return {
 				title: 'Hello',
-				list: [],
+				bannerList: [],
+				activityList: [],
+				sortList:[],
 			}
 		},
 		onLoad() {
-			this.getBannerFun();
+			this.getBannerFun(); //获取首页轮播图
+			this.getActivityListFun() //获取活动列表
+			this.getSortListFun() //分类
 		},
 		methods: {
 			// 获取首页banner图
 			getBannerFun() {
 				getBanner().then(res => {
-					this.list = res.imgList;
-					console.log('this.list',this.list)
+					this.bannerList = res?.data;
+				})
+			},
+			getActivityListFun(){
+				getActivityList().then(res => {
+					this.activityList = res?.data;
+				})
+			},
+			getSortListFun(){
+				getSortList().then(res => {
+					this.sortList = res?.data;
 				})
 			},
 			addInfo() {
@@ -91,6 +109,11 @@
 </script>
 
 <style>
+	.active-class{
+		width: 100%;
+		height: 200rpx;
+	}
+	
 	.yht-index {
 		min-height: 100vh;
 		padding: 0 20rpx;

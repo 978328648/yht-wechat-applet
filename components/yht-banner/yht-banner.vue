@@ -6,7 +6,7 @@
 				<view class="banner-item">
 					<!-- 注意图片路径 -->
 					<view @click="onKip(item,index)" class="navbox">
-						<image :src="`http://www.a57521.com:8008/${item}`"
+						<image :src="`http://www.a57521.com:8008/${item.url}`"
 							mode="aspectFill" v-if="true||item && item.picUrl" lazy-load="true" class="booklog"></image>
 						<!-- <image src="https://cdn1.cmread.com/ues/61/55273d99ec7ed80ab80415caab35d6092e61/pic.jpg"
 							mode="aspectFill" v-if="true||item && item.picUrl" lazy-load="true" class="booklog"></image> -->
@@ -68,7 +68,7 @@
 		}
 
 		height: 280rpx;
-		margin-top:24rpx;
+		// margin-top:24rpx;
 
 		.navbox {
 			width: 100%;

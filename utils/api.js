@@ -1,12 +1,32 @@
 import {http} from "./http.js"
+// 获取首页轮播图
 export function getBanner(data) {
   return http({
-    url: '/user/getHomeBanner',
+    url: '/getHomeBanner',
     method: "GET",
     atType: "no",
 	data
   })
 }
+// 获取活动列表
+export function getActivityList(data) {
+  return http({
+    url: '/getActivityList',
+    method: "GET",
+    atType: "no",
+	data
+  })
+}
+// 获取分类列表
+export function getSortList(data) {
+  return http({
+    url: '/getSortList',
+    method: "GET",
+    atType: "no",
+	data
+  })
+}
+
 export function getListTest(data) {
   return http({
     url: '/user/list',
