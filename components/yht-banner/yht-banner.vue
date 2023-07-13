@@ -67,7 +67,7 @@
 			height: 100%;
 		}
 
-		height: 280rpx;
+		height: 350rpx;
 		// margin-top:24rpx;
 
 		.navbox {
@@ -76,14 +76,14 @@
 		}
 
 		.banner-item {
-			height: 280rpx;
-			border-radius: 12rpx;
+			height: 350rpx;
+			// border-radius: 12rpx;
 
 			.booklog {
 				display: block;
 				width: 100%;
 				height: 100%;
-				border-radius: 12rpx;
+				// border-radius: 12rpx;
 			}
 		}
 	}
