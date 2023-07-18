@@ -33,6 +33,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/product-details/product-details",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#8a8a8a",

@@ -1,7 +1,7 @@
 <template>
 	<view class="yht-index">
 		<!-- 活动图 -->
-		<img :src="`http://www.a57521.com:8008/${activityList[0].activity_url}`" v-if="activityList.length !== 0" alt="" srcset="" class="active-class">
+		<img :src="`${imgUrl}${activityList[0].activity_url}`" v-if="activityList.length !== 0" alt="" srcset="" class="active-class">
 		<!-- 轮播图 -->
 		<yhtBanner v-if="bannerList.length !== 0" :list="bannerList"></yhtBanner>
 		<!-- 分类标签 -->
@@ -9,7 +9,7 @@
 			<view class="page-section-spacing" style="padding: 0.2rem;">
 				<view class="flex-wrp" >
 					<view v-for="(items,index) in sortList" :key="index" class="flex-item">
-						<img :src="`http://www.a57521.com:8008/${items.sort_img}`" class="flex-item-img" />
+						<img :src="`${imgUrl}${items.sort_img}`" class="flex-item-img" />
 						<text >{{items.sort_name}}</text>
 					</view>
 				</view>
@@ -17,17 +17,20 @@
 		</view>
 		<!-- 商品列表 -->
 		<view class="ComBox">
-			<div class="ComList" v-for="item in ComListSon" :key="item.id" @click="ToDel(item.id)">
+			<div class="ComList" v-for="item in ComListSon" :key="item.product_id" @click="ToDel(item.product_id)">
 				<div class="ImgBOX">
-					<img :src="item.img" class="Img" alt="">
+					<img :src="`${imgUrl}${item.product_img_list}`" class="Img" alt="">
 				</div>
 				<div class="Title">
-					{{item.title}}
+					{{item.product_name}}
 				</div>
 				<div class="Price">
-					￥{{item.price}}
+					￥{{item.product_price}}
 				</div>
 			</div>
+		</view>
+		<view class="allListShow" v-if="listAllShow">
+			--没有更多了--
 		</view>
 		<!-- <view class="list-item" v-for="(item,index) in list">
 			<view class="colum">
@@ -62,7 +65,7 @@
 		dataIndextj,
 		getListTest,
 		addTest,
-		updateTest,getBanner,getActivityList,getSortList
+		updateTest,getBanner,getActivityList,getSortList,getProductList
 	} from "@/utils/api.js"
 	import {http} from "@/utils/http.js"
 	import yhtBanner from "@/components/yht-banner/yht-banner.vue"
@@ -73,42 +76,14 @@
 		data() {
 			return {
 				title: 'Hello',
+				imgUrl:'https://www.a57521.com/images/',
 				bannerList: [],
 				activityList: [],
 				sortList:[],
-				ComList: [],  //被合并的列表
-				ComListSon: [{
-						id: 1,
-						img: "../../static/logo.png",
-						title: '这是商品标题，超出部分会被隐藏为省略号。',
-						price: '156'
-					},
-					{
-						id: 2,
-						img: "../../static/logo.png",
-						title: '这是商品标题，超出部分会被隐藏为省略号。当其超出两行的时候',
-						price: '156'
-					},
-					{
-						id: 3,
-						img: "../../static/logo.png",
-						title: '这是商品标题，超出部分会被隐藏为省略号。当其超出两行的时候',
-						price: '156'
-					},
-					{
-						id: 4,
-						img: "../../static/logo.png",
-						title: '这是商品标题，超出部分会被隐藏为省略号。',
-						price: '156'
-					},
-					{
-						id: 5,
-						img: "../../static/logo.png",
-						title: '这是商品标题，超出部分会被隐藏为省略号。',
-						price: '156'
-					}
-				],
+				ComListSon: [],
 				page: 1, //页数
+				pageSize:10,
+				listAllShow:false,//加载完了
 			}
 		},
 		onLoad() {
@@ -116,13 +91,15 @@
 			this.getActivityListFun() //获取活动列表
 			this.getSortListFun() //分类
 			this.page = 1
-			this.getComList()
+			this.getComList(this.page)
 		},
 		onReachBottom: function() {
-			//下拉触发事件
-			// this.page++;
-			// this.getDefault(this.page);
-			console.log('触发了下拉加载更多的事件')
+			if(!this.listAllShow){
+				//下拉触发事件
+				this.page++;
+				this.getComList(this.page);
+				console.log('触发了下拉加载更多的事件')
+			}
 		},
 		methods: {
 			// 获取首页banner图
@@ -151,18 +128,22 @@
 			},
 			getComList(page) { //参数为页数
 				// 将获取的第page页数据合并进原数组   举例
-				// axios.post('/list',{page:page}).then(res=>{
-				// 	if(res.code == 1){ //接口调用成功
-				// 		 this.ComListSon = res.data
-				// 	}else{
-				// 		wx.showToast(
-				// { title: res.mes?res.msg:'信息获取错误',
-				// icon: 'none', duration: 500 });
-				// 	}
-				// 	Array.prototype.push.apply(this.ComList, this.ComListSon);
-				 //合并加载更多的数据与源数据.
-				// })
-				//
+				getProductList({
+					page,
+					pageSize:this.pageSize,
+				}).then(res => {
+					if(res.success){
+						if(res.data.length < this.pageSize){
+							this.listAllShow = true
+						}
+						this.ComListSon.push(...res.data)
+					}else{
+						wx.showToast(
+						{ title: res.mes?res.msg:'信息获取错误',
+						icon: 'none', duration: 500 });
+					}
+					
+				})
 			},
 			addInfo() {
 				addTest({
@@ -196,6 +177,13 @@
 </script>
 
 <style lang="scss">
+	.allListShow{
+		    text-align: center;
+		    height: 70rpx;
+		    line-height: 70rpx;
+		    font-size: 30rpx;
+		    color: #cccccc;
+	}
 	.ComBox {
 			width: 690rpx; //根据微信定义设置  如非必要不建议改为100%；
 			padding: 10rpx 30rpx;

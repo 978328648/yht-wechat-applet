@@ -2,8 +2,8 @@
 // import jsencrypt from "@/utils/jsencrypt.js"
 import store from '@/store'
 const baseUrl = {
-	API_HOST: "https://www.a57521.com:5000",//现网
-	// API_HOST: "https://localhost:8091",//我的ip
+	// API_HOST: "https://www.a57521.com:5000",//现网
+	API_HOST: "https://localhost:8091",//我的ip
 	// API_HOST: "http://192.168.31.115:9090",//我的ip
 	// API_HOST: "https://wap.cmread.com",
 	// API_HOST: "https://mtest.cmread.com:8145",
@@ -34,7 +34,8 @@ export const http = (parapms) => {
 	if (method && method == "POST") {
 		header = {
 			// "content-type": notForm ? 'application/json' : 'application/x-www-form-urlencoded', //在发送前编码所有字符
-			"content-type": 'application/json', //在发送前编码所有字符
+			"content-type": 'application/x-www-form-urlencoded', //在发送前编码所有字符
+			// "content-type": 'application/json', //在发送前编码所有字符
 			"X-Terminal-ID": uni.getStorageSync("unionId") || "",
 			"Accept": "application/json",
 			"x-forwarded-for": '10.73.155.158',

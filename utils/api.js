@@ -26,6 +26,15 @@ export function getSortList(data) {
 	data
   })
 }
+// 获取产品列表
+export function getProductList(data) {
+  return http({
+    url: '/getProductList',
+    method: "POST",
+    atType: "no",
+	data
+  })
+}
 
 export function getListTest(data) {
   return http({
